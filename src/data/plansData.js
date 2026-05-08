@@ -1,0 +1,60 @@
+export const plans = [
+  {
+    name: "Basic",
+    price: "$9.99/Month",
+    content:
+      "Access to a wide selection of movies and shows, including some new releases.",
+    devices: "Watch on one device simultaneously",
+    trial: "7 Days",
+    cancel: "Yes",
+    hdr: "No",
+    atmos: "No",
+    adFree: "No",
+    offline: "No",
+    sharing: "No",
+    popular: false,
+  },
+  {
+    name: "Standard",
+    price: "$12.99/Month",
+    content:
+      "Access to a wider selection of movies and shows, including most new releases and exclusive content.",
+    devices: "Watch on Two devices simultaneously",
+    trial: "7 Days",
+    cancel: "Yes",
+    hdr: "Yes",
+    atmos: "Yes",
+    adFree: "Yes",
+    offline: "Yes, for select titles.",
+    sharing: "Yes, up to 5 family members.",
+    popular: true,
+  },
+  {
+    name: "Premium",
+    price: "$14.99/Month",
+    content:
+      "Access to widest selection of movies and shows including all new releases and Offline Viewing",
+    devices: "Watch on Four devices simultaneously",
+    trial: "7 Days",
+    cancel: "Yes",
+    hdr: "Yes",
+    atmos: "Yes",
+    adFree: "Yes",
+    offline: "Yes, for all titles.",
+    sharing: "Yes, up to 6 family members.",
+    popular: false,
+  },
+];
+
+export const rows = [
+  { label: "Price", key: "price" },
+  { label: "Content", key: "content" },
+  { label: "Devices", key: "devices" },
+  { label: "Free Trial", key: "trial" },
+  { label: "Cancel Anytime", key: "cancel" },
+  { label: "HDR", key: "hdr" },
+  { label: "Dolby Atmos", key: "atmos" },
+  { label: "Ad - Free", key: "adFree" },
+  { label: "Offline Viewing", key: "offline" },
+  { label: "Family Sharing", key: "sharing" },
+];
