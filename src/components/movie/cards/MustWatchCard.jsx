@@ -1,4 +1,5 @@
 import { FaClock, FaEye, FaStar, FaRegStar } from "react-icons/fa";
+import StarRating from "../../../movieLayouts/components/StarRating";
 
 const MustWatchCard = ({ title, image, duration, views, rating }) => {
   return (
@@ -18,15 +19,7 @@ const MustWatchCard = ({ title, image, duration, views, rating }) => {
 
         {/* Rating */}
         <div className="flex items-center gap-2 bg-[#111] px-3 py-1 rounded-full">
-          <div className="flex items-center text-red-500">
-            {[...Array(5)].map((_, index) =>
-              index < rating ? (
-                <FaStar key={index} />
-              ) : (
-                <FaRegStar key={index} />
-              ),
-            )}
-          </div>
+         <StarRating rating={rating}/>
 
           <span className="text-sm text-gray-400">{views}</span>
         </div>

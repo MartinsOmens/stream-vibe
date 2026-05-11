@@ -91,6 +91,7 @@ const MovieBanner = () => {
                         <Volume2 size={18} />
                       </button>
                     </div>
+                    
                   </div>
                 </div>
               </div>
