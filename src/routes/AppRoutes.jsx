@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import Movies from "../pages/Movies";
 import Support from "../pages/Support";
 import Subscriptions from "../pages/Subscriptions";
+import MovieDetails from "../pages/MovieDetails";
 
 const AppRoutes = () => {
   return (
@@ -11,6 +12,7 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
+        <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path="/support" element={<Support />} />
         <Route path="/subscriptions" element={<Subscriptions />} />
       </Routes>
