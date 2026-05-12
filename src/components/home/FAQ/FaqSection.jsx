@@ -76,7 +76,7 @@ const FaqSection = () => {
     <section className=" px-6 md:px-16 py-12">
       <div className="mb-14 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
         <div>
-          <h2 className="text-3xl md:text-4xl font-semibold text-white mb-3 tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-semibold text-white mb-3 tracking-tight">
             Frequently Asked Questions
           </h2>
 

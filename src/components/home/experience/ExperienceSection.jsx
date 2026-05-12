@@ -48,7 +48,7 @@ const devices = [
 
 const ExperienceSection = () => {
   return (
-    <section className="px-6 py-12 mt-10 text-white sm:px-6 lg:px-8">
+    <section className="px-6 py-12 text-white sm:px-6 lg:px-8">
       {/* Header */}
       <div className="mb-10 max-w-3xl">
         <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4 leading-snug">

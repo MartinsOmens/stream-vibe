@@ -3,22 +3,22 @@ import { Navigation } from "swiper/modules";
 
 import "swiper/css";
 
-import SliderButtons from "../../../ui/SliderButtons";
+import MovieCard from "./MovieCard";
+import SliderButtons from "../ui/SliderButtons";
+import MediaCard from "./MediaCard";
 
-import NewReleaseShowsCard from "../showCards/NewReleaseShowsCard";
-
-const NewReleaseShowSlider = ({ data }) => {
+const MediaSlider = ({ data, prevClass, nextClass }) => {
   return (
     <>
       <div className="flex justify-end mb-10">
-        <SliderButtons prevClass="trend-prev" nextClass="trend-next" />
+        <SliderButtons prevClass={prevClass} nextClass={nextClass} />
       </div>
 
       <Swiper
         modules={[Navigation]}
         navigation={{
-          prevEl: ".trend-prev",
-          nextEl: ".trend-next",
+          prevEl: `.${prevClass}`,
+          nextEl: `.${nextClass}`,
         }}
         spaceBetween={20}
         breakpoints={{
@@ -36,9 +36,9 @@ const NewReleaseShowSlider = ({ data }) => {
           },
         }}
       >
-        {data.map((item) => (
-          <SwiperSlide key={item.id}>
-            <NewReleaseShowsCard item={item} />
+        {data.map((movie) => (
+          <SwiperSlide key={movie.id}>
+            <MediaCard item={movie} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -46,4 +46,4 @@ const NewReleaseShowSlider = ({ data }) => {
   );
 };
 
-export default NewReleaseShowSlider;
+export default MediaSlider;

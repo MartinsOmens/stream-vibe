@@ -13,11 +13,13 @@ import {
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
-import { banners } from "../../data/banners";
+import useMovies from "../../hooks/useMovies";
+import { fetchBannerMovies } from "../../api/tmdb";
 import { useNavigate } from "react-router-dom";
+import { bannerPagination } from "../../config/swiper/bannerPagination";
 
 const MovieBanner = () => {
+  const { data: banners, loading } = useMovies(fetchBannerMovies);
   const navigate = useNavigate();
   return (
     <section className="w-full px-4 py-8">
@@ -35,21 +37,15 @@ const MovieBanner = () => {
             prevEl: ".banner-prev",
             nextEl: ".banner-next",
           }}
-          pagination={{
-            clickable: true,
-            el: ".banner-pagination",
-            bulletClass: "swiper-pagination-bullet banner-bullet",
-            bulletActiveClass:
-              "swiper-pagination-bullet-active banner-bullet-active",
-          }}
+          pagination={bannerPagination}
           className="h-[650px]"
         >
-          {banners.map((banner) => (
+          {banners.slice(0, 5).map((banner) => (
             <SwiperSlide key={banner.id}>
               <div className="relative h-[650px] w-full">
                 {/* Background Image */}
                 <img
-                  src={banner.image}
+                  src={`https://image.tmdb.org/t/p/original${banner.backdrop_path}`}
                   alt={banner.title}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
@@ -65,15 +61,15 @@ const MovieBanner = () => {
                     </h1>
 
                     <p className="mx-auto mb-8 max-w-2xl text-sm leading-7 text-gray-300 md:text-base">
-                      {banner.description}
+                      {banner.overview}
                     </p>
 
                     <div className="flex items-center justify-center gap-3">
                       {/* Play Button */}
-                      <button 
-                    
-                      onClick={() => navigate(`/movie/${banner.id}`)}
-                      className="flex items-center gap-2 rounded-md bg-red-600 px-7 py-4 text-sm font-semibold text-white transition duration-300 hover:bg-red-700">
+                      <button
+                        onClick={() => navigate(`/movie/${banner.id}`)}
+                        className="flex items-center gap-2 rounded-md bg-red-600 px-7 py-4 text-sm font-semibold text-white transition duration-300 hover:bg-red-700"
+                      >
                         <Play size={18} fill="white" />
                         Play Now
                       </button>
@@ -91,7 +87,6 @@ const MovieBanner = () => {
                         <Volume2 size={18} />
                       </button>
                     </div>
-                    
                   </div>
                 </div>
               </div>
@@ -110,26 +105,8 @@ const MovieBanner = () => {
         </button>
 
         {/* Pagination */}
-        <div className="banner-pagination absolute bottom-14 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2" />
+        <div className="banner-pagination absolute bottom-14 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2" />
       </div>
-
-      {/* Swiper Pagination Styles */}
-      <style>
-        {`
-          .banner-bullet {
-            width: 24px;
-            height: 3px;
-            border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.3);
-            opacity: 1;
-            transition: all 0.3s ease;
-          }
-
-          .banner-bullet-active {
-            background: #ef4444;
-          }
-        `}
-      </style>
     </section>
   );
 };

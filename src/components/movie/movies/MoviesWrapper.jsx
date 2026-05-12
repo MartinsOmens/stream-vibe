@@ -1,27 +1,14 @@
-import GenreSlider from "../sliders/GenreSlider";
-import TopGenreSlider from "../sliders/TopGenreSlider";
-import TrendingSlider from "../sliders/TrendingSlider";
-
 import SectionHeader from "../SectionHeader";
-
-import {
-  genres,
-  topGenres,
-  trendingMovies,
-  newRelease,
-  mustWatch,
-} from "../../../data/moviesData";
-
-import {
-  trendingShows,
-  newReleaseShows,
-  mustWatchShows,
-} from "../../../data/shows";
-import NewReleaseSlider from "../sliders/NewReleaseSlider";
-import TrendingShowSlider from "../shows/showSliders/TrendingShowSliders";
-import NewReleaseShowSlider from "../shows/showSliders/NewReleaseShowSlider";
-import MustWatchShowSlider from "../shows/showSliders/MustWatchShowSlider";
 import CTASection from "../../home/CTA/CTASection";
+import GenreWrapper from "../movies/GenreWrapper";
+import PopularSection from "../../../sections/movies/PopularSection";
+import TrendingSection from "../../../sections/movies/TrendingSection";
+import UpcomingSection from "../../../sections/movies/UpcomingSection";
+import TopRatedSection from "../../../sections/movies/TopRatedSection";
+import TrendingShowsSection from "../../../sections/shows/TrendingShowsSection";
+import PopularShowsSection from "../../../sections/shows/PopularShowsSection";
+import TopRatedShows from "../../../sections/shows/TopRatedShows";
+import NewReleaseShows from "../../../sections/shows/NewReleaseShows";
 
 const MoviesWrapper = () => {
   return (
@@ -33,27 +20,27 @@ const MoviesWrapper = () => {
 
         <section className="mb-16">
           <SectionHeader title="Our Genres" />
-          <GenreSlider data={genres} />
+          <GenreWrapper />
         </section>
 
         <section className="mb-16">
-          <SectionHeader title="Popular Top 10 In Genres" />
-          <TopGenreSlider data={topGenres} />
+          <SectionHeader title="Popular Movies" />
+          <PopularSection />
         </section>
 
         <section className="mb-16">
-          <SectionHeader title="Trending Now" />
-          <TrendingSlider data={trendingMovies} />
+          <SectionHeader title="Trending Movies" />
+          <TrendingSection />
         </section>
 
         <section className="mb-16">
-          <SectionHeader title="New Releases" />
-          <NewReleaseSlider data={newRelease} />
+          <SectionHeader title="New Released Movies" />
+          <UpcomingSection />
         </section>
 
         <section className="mb-16">
-          <SectionHeader title="Must - Watch Movies" />
-          <NewReleaseSlider data={mustWatch} />
+          <SectionHeader title="Top Rated Movies" />
+          <TopRatedSection />
         </section>
       </div>
 
@@ -64,28 +51,23 @@ const MoviesWrapper = () => {
         </button>
 
         <section className="mb-16">
-          <SectionHeader title="Our Genres" />
-          <GenreSlider data={genres} />
+          <SectionHeader title="Popular Shows" />
+          <PopularShowsSection />
         </section>
 
         <section className="mb-16">
-          <SectionHeader title="Popular Top 10 In Genres" />
-          <TopGenreSlider data={topGenres} />
-        </section>
-
-        <section className="mb-16">
-          <SectionHeader title="Trending Shows Now" />
-          <TrendingShowSlider data={trendingShows} />
+          <SectionHeader title="Trending TV Shows" />
+          <TrendingShowsSection />
         </section>
 
         <section className="mb-16">
           <SectionHeader title="New Released Shows" />
-          <NewReleaseShowSlider data={newReleaseShows} />
+          <NewReleaseShows />
         </section>
 
         <section className="mb-16">
           <SectionHeader title="Must-Watch Shows" />
-          <MustWatchShowSlider data={mustWatchShows} />
+          <TopRatedShows />
         </section>
 
         <CTASection />
