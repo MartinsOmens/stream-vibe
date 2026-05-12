@@ -20,7 +20,6 @@ export const fetchBannerMovies = async () => {
   return response.data.results;
 };
 
-
 //FETCH MOVIE BY GENRE
 export const fetchMoviesByGenre = async (genreId) => {
   const response = await api.get("/discover/movie", {
@@ -31,7 +30,6 @@ export const fetchMoviesByGenre = async (genreId) => {
 
   return response.data.results;
 };
-
 
 // Fetch Trending Movies
 export const fetchTrendingMovies = async () => {
@@ -51,20 +49,18 @@ export const fetchPopularMovies = async () => {
   return response.data.results;
 };
 
-
 //UPCOMING MOVIES
-export const fetchUpcomingMovies = async () =>{
-    const response = await api.get("movie/now_playing");
-    return response.data.results
-}
+export const fetchUpcomingMovies = async () => {
+  const response = await api.get("movie/now_playing");
+  return response.data.results;
+};
 
 //TOP RATED
 
-export const fetchTopRatedMovies = async () =>{
-    const response = await api.get("/movie/top_rated");
-    return response.data.results;
-}
-
+export const fetchTopRatedMovies = async () => {
+  const response = await api.get("/movie/top_rated");
+  return response.data.results;
+};
 
 //--------------SHOWS ----------------
 
@@ -93,4 +89,28 @@ export const fetchTopRatedShows = async () => {
   return response.data.results;
 };
 
+//----------------------- MOVIE DETAILS ----------------
+// Fetch movie details
+export const fetchMovieDetails = async (id) => {
+  const response = await api.get(`/movie/${id}`);
 
+  return response.data;
+};
+
+//Fetch movie reviews
+export const fetchMovieReviews = async (id) => {
+  const response = await api.get(`/movie/${id}/reviews`);
+  return response.data;
+};
+
+// Fetch movie credits (cast)
+export const fetchMovieCredits = async (id) => {
+  const response = await api.get(`/movie/${id}/credits`);
+
+  return response.data;
+};
+
+export const fetchPersonDetails = async (personId) => {
+  const response = await api.get(`/person/${personId}`);
+  return response.data;
+};

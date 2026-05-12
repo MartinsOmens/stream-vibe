@@ -1,13 +1,12 @@
-// src/components/StarRating.jsx
-
 import { Star, StarHalf } from "lucide-react";
 
-const StarRating = ({ rating }) => {
+const StarRating = ({ rating = 0 }) => {
+  const normalized = Math.max(0, Math.min(5, rating));
+
   return (
     <div className="flex items-center gap-1">
       {[...Array(5)].map((_, index) => {
-        // FULL STAR
-        if (index + 1 <= Math.floor(rating)) {
+        if (index + 1 <= Math.floor(normalized)) {
           return (
             <Star
               key={index}
@@ -17,10 +16,9 @@ const StarRating = ({ rating }) => {
           );
         }
 
-        // HALF STAR
         if (
-          rating % 1 !== 0 &&
-          index === Math.floor(rating)
+          normalized % 1 !== 0 &&
+          index === Math.floor(normalized)
         ) {
           return (
             <StarHalf
@@ -31,7 +29,6 @@ const StarRating = ({ rating }) => {
           );
         }
 
-        // EMPTY STAR
         return (
           <Star
             key={index}
@@ -42,7 +39,7 @@ const StarRating = ({ rating }) => {
       })}
 
       <span className="ml-1 text-sm text-white">
-        {rating}
+        {normalized.toFixed(1)}
       </span>
     </div>
   );

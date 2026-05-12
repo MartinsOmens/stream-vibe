@@ -1,4 +1,4 @@
-// src/movieLayouts/movieOne/components/DescriptionCard.jsx
+
 
 const DescriptionCard = ({ movie }) => {
   return (
@@ -8,7 +8,7 @@ const DescriptionCard = ({ movie }) => {
       </h2>
 
       <p className="leading-8 text-zinc-400">
-        {movie.description}
+        {movie.overview}
       </p>
     </div>
   );
