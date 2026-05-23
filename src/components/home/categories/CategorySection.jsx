@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/navigation";
 import GenreWrapper from "../../movie/movies/GenreWrapper";
@@ -26,13 +25,10 @@ const CategorySection = () => {
             Whether you're looking for a action, comedy, drama, or horror
           </p>
         </div>
-
       </div>
-        <section className="mb-16">
-          <GenreWrapper />
-        </section>
-
-
+      <section className="mb-16">
+        <GenreWrapper />
+      </section>
     </section>
   );
 };

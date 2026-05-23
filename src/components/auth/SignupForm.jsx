@@ -1,0 +1,113 @@
+import { useState } from "react";
+import { Icon } from "@iconify/react";
+import { Link } from "react-router-dom";
+
+export default function Signup() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+
+  return (
+    <div className="min-h-screen flex items-center justify-center px-4 text-white">
+      <div className="w-full max-w-md bg-[#1a1a1a] border border-[#E50000] shadow-xl rounded-2xl p-8">
+        {/* Header */}
+        <div className="text-center mb-6">
+          <h1 className="text-3xl font-bold text-[#E50000]">Create Account</h1>
+          <p className="text-gray-300 mt-2">Sign up to get started</p>
+        </div>
+
+        {/* Form */}
+        <form className="space-y-4">
+          {/* Name */}
+          <div>
+            <label className="block text-sm text-gray-400 mb-1">
+              Full Name
+            </label>
+            <input
+              type="text"
+              placeholder="John Doe"
+              className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-xl focus:outline-none focus:border-[#E50000]"
+            />
+          </div>
+
+          {/* Email */}
+          <div>
+            <label className="block text-sm text-gray-400 mb-1">Email</label>
+            <input
+              type="email"
+              placeholder="you@example.com"
+              className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-xl focus:outline-none focus:border-[#E50000]"
+            />
+          </div>
+
+          {/* Password */}
+          <div>
+            <label className="block text-sm text-gray-400 mb-1">Password</label>
+
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="••••••••"
+                className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-xl focus:outline-none focus:border-[#E50000] pr-12"
+              />
+
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#E50000] hover:text-[#C40000]"
+              >
+                {showPassword ? (
+                  <Icon icon="mdi:eye-off" width={20} />
+                ) : (
+                  <Icon icon="mdi:eye" width={20} />
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Confirm Password */}
+          <div>
+            <label className="block text-sm text-gray-400 mb-1">
+              Confirm Password
+            </label>
+
+            <div className="relative">
+              <input
+                type={showConfirm ? "text" : "password"}
+                placeholder="••••••••"
+                className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-xl focus:outline-none focus:border-[#E50000] pr-12"
+              />
+
+              <button
+                type="button"
+                onClick={() => setShowConfirm(!showConfirm)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#E50000] hover:text-[#C40000]"
+              >
+                {showConfirm ? (
+                  <Icon icon="mdi:eye-off" width={20} />
+                ) : (
+                  <Icon icon="mdi:eye" width={20} />
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            className="w-full bg-[#E50000] text-white py-3 rounded-xl hover:bg-[#C40000] font-semibold transition"
+          >
+            Sign Up
+          </button>
+        </form>
+
+        {/* Connector */}
+        <p className="text-center text-gray-400 text-sm mt-6">
+          Already have an account?{" "}
+          <Link to="/login" className="text-[#E50000] hover:underline">
+            Login
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
+}

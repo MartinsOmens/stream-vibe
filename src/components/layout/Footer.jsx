@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { Icon } from "@iconify/react";
 
 const Footer = () => {
   const footerLinks = [
@@ -25,7 +25,7 @@ const Footer = () => {
     },
   ];
 
-  const socialIcons = [FaFacebookF, FaTwitter, FaLinkedinIn];
+  const socialIcons = ["mdi:facebook", "mdi:twitter", "mdi:linkedin"];
 
   return (
     <footer className="px-6 md:px-16 py-20">
@@ -52,12 +52,12 @@ const Footer = () => {
         <div>
           <h3 className="text-white font-medium mb-6">Connect With Us</h3>
           <div className="flex gap-3">
-            {socialIcons.map((Icon, index) => (
+            {socialIcons.map((icon, index) => (
               <button
                 key={index}
                 className="w-11 h-11 rounded-lg  bg-white/5 border border-white/5 flex items-center justify-center text-white hover:bg-red-500 transition-all duration-300"
               >
-                <Icon size={16} />
+                <Icon icon={icon} width={16} />
               </button>
             ))}
           </div>

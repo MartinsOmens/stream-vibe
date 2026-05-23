@@ -24,9 +24,7 @@ const Hero = () => {
         <div className="relative z-20 h-full max-w-7xl mx-auto px-4 flex flex-col">
           {/* Hero Content */}
           <div className="absolute inset-0 flex items-center justify-center z-20">
-            <div className="md:mt-70">
-              <HeroContent />
-            </div>
+            <HeroContent />
           </div>
         </div>
       </div>

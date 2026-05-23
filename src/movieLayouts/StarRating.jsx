@@ -1,4 +1,4 @@
-import { Star, StarHalf } from "lucide-react";
+import { Icon } from "@iconify/react";
 
 const StarRating = ({ rating = 0 }) => {
   const normalized = Math.max(0, Math.min(5, rating));
@@ -8,39 +8,37 @@ const StarRating = ({ rating = 0 }) => {
       {[...Array(5)].map((_, index) => {
         if (index + 1 <= Math.floor(normalized)) {
           return (
-            <Star
+            <Icon
               key={index}
-              size={14}
-              className="fill-red-500 text-red-500"
+              icon="mdi:star"
+              width={14}
+              className="text-red-500"
             />
           );
         }
 
-        if (
-          normalized % 1 !== 0 &&
-          index === Math.floor(normalized)
-        ) {
+        if (normalized % 1 !== 0 && index === Math.floor(normalized)) {
           return (
-            <StarHalf
+            <Icon
               key={index}
-              size={14}
-              className="fill-red-500 text-white"
+              icon="mdi:star-half-full"
+              width={14}
+              className="text-red-500"
             />
           );
         }
 
         return (
-          <Star
+          <Icon
             key={index}
-            size={14}
+            icon="mdi:star-outline"
+            width={14}
             className="text-zinc-600"
           />
         );
       })}
 
-      <span className="ml-1 text-sm text-white">
-        {normalized.toFixed(1)}
-      </span>
+      <span className="ml-1 text-sm text-white">{normalized.toFixed(1)}</span>
     </div>
   );
 };

@@ -1,46 +1,39 @@
-import {
-  Smartphone,
-  TabletSmartphone,
-  Tv,
-  Laptop,
-  Gamepad2,
-  Headset,
-} from "lucide-react";
+import { Icon } from "@iconify/react";
 
 const devices = [
   {
     title: "Smartphones",
-    icon: Smartphone,
+    icon: "mdi:cellphone",
     description:
       "StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
   },
   {
     title: "Tablet",
-    icon: TabletSmartphone,
+    icon: "mdi:tablet-ipad",
     description:
       "StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
   },
   {
     title: "Smart TV",
-    icon: Tv,
+    icon: "mdi:television",
     description:
       "StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
   },
   {
     title: "Laptops",
-    icon: Laptop,
+    icon: "mdi:laptop",
     description:
       "StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
   },
   {
     title: "Gaming Consoles",
-    icon: Gamepad2,
+    icon: "mdi:gamepad-variant",
     description:
       "StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
   },
   {
     title: "VR Headsets",
-    icon: Headset,
+    icon: "mdi:headset",
     description:
       "StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
   },
@@ -80,10 +73,16 @@ const ExperienceSection = () => {
                 {/* Content */}
                 <div className="relative z-10">
                   <div className="mb-5 flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl 
+                    <div
+                      className="flex h-12 w-12 items-center justify-center rounded-xl 
                       bg-white/5 text-red-500 ring-1 ring-white/5 
-                      group-hover:bg-red-500/10 transition">
-                      <Icon className="h-6 w-6" />
+                      group-hover:bg-red-500/10 transition"
+                    >
+                      <Icon
+                        icon={item.icon}
+                        width={24}
+                        className="text-red-500"
+                      />
                     </div>
 
                     <h3 className="text-lg sm:text-xl font-medium">

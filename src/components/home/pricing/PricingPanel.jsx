@@ -49,7 +49,7 @@ const PricingPanel = () => {
   };
 
   return (
-    <div className="min-h-screen  px-6 py-12 text-white sm:px-6 lg:px-8">
+    <div className="h-max px-6 py-12 text-white sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}

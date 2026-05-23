@@ -1,7 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Icon } from "@iconify/react";
 
 const CastSection = ({ cast }) => {
   return (
@@ -13,11 +12,11 @@ const CastSection = ({ cast }) => {
         {/* custom navigation buttons */}
         <div className="flex gap-2">
           <button className="cast-prev flex h-10 w-10 items-center justify-center rounded-full bg-(--color-dark) hover:bg-zinc-700">
-            <ChevronLeft size={18} />
+            <Icon icon="mdi:chevron-left" width={18} />
           </button>
 
           <button className="cast-next flex h-10 w-10 items-center justify-center rounded-full bg-(--color-dark) hover:bg-zinc-700">
-            <ChevronRight size={18} />
+            <Icon icon="mdi:chevron-right" width={18} />
           </button>
         </div>
       </div>
@@ -52,13 +51,9 @@ const CastSection = ({ cast }) => {
                 />
               </div>
 
-              <h3 className="mt-3 text-sm font-semibold">
-                {actor.name}
-              </h3>
+              <h3 className="mt-3 text-sm font-semibold">{actor.name}</h3>
 
-              <p className="text-xs text-zinc-400">
-                {actor.character}
-              </p>
+              <p className="text-xs text-zinc-400">{actor.character}</p>
             </div>
           </SwiperSlide>
         ))}

@@ -1,14 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
-import {
-  Play,
-  Plus,
-  ThumbsUp,
-  Volume2,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { Icon } from "@iconify/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -70,21 +63,37 @@ const MovieBanner = () => {
                         onClick={() => navigate(`/movie/${banner.id}`)}
                         className="flex items-center gap-2 rounded-md bg-red-600 px-7 py-4 text-sm font-semibold text-white transition duration-300 hover:bg-red-700"
                       >
-                        <Play size={18} fill="white" />
+                        <Icon
+                          icon="mdi:play"
+                          width={18}
+                          className="text-white"
+                        />
                         Play Now
                       </button>
 
                       {/* Icon Buttons */}
                       <button className="flex h-12 w-12 items-center justify-center rounded-md bg-black/60 text-white backdrop-blur-md transition duration-300 hover:bg-white hover:text-black">
-                        <Plus size={18} />
+                        <Icon
+                          icon="mdi:plus"
+                          width={18}
+                          className="text-white"
+                        />
                       </button>
 
                       <button className="flex h-12 w-12 items-center justify-center rounded-md bg-black/60 text-white backdrop-blur-md transition duration-300 hover:bg-white hover:text-black">
-                        <ThumbsUp size={18} />
+                        <Icon
+                          icon="mdi:thumb-up"
+                          width={18}
+                          className="text-white"
+                        />
                       </button>
 
                       <button className="flex h-12 w-12 items-center justify-center rounded-md bg-black/60 text-white backdrop-blur-md transition duration-300 hover:bg-white hover:text-black">
-                        <Volume2 size={18} />
+                        <Icon
+                          icon="mdi:volume-high"
+                          width={18}
+                          className="text-white"
+                        />
                       </button>
                     </div>
                   </div>
@@ -96,12 +105,12 @@ const MovieBanner = () => {
 
         {/* Left Arrow */}
         <button className="banner-prev absolute bottom-10 left-6 z-20 flex h-12 w-12 items-center justify-center rounded-md bg-black/60 text-white transition duration-300 hover:bg-white hover:text-black">
-          <ChevronLeft size={24} />
+          <Icon icon="mdi:chevron-left" width={24} />
         </button>
 
         {/* Right Arrow */}
         <button className="banner-next absolute bottom-10 right-6 z-20 flex h-12 w-12 items-center justify-center rounded-md bg-black/60 text-white transition duration-300 hover:bg-white hover:text-black">
-          <ChevronRight size={24} />
+          <Icon icon="mdi:chevron-right" width={24} />
         </button>
 
         {/* Pagination */}
