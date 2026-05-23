@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  ChevronDown,
-  ChevronUp,
-  PlayCircle,
-  Clock3,
-} from "lucide-react";
+import { Icon } from "@iconify/react";
 import { seasonsData } from "../../data/layout";
 
 export default function SeasonDetails() {
@@ -46,9 +41,17 @@ export default function SeasonDetails() {
 
                 <div className="rounded-full bg-white/5 p-1">
                   {isOpen ? (
-                    <ChevronUp className="h-4 w-4 text-zinc-400" />
+                    <Icon
+                      icon="mdi:chevron-up"
+                      width={16}
+                      className="text-zinc-400"
+                    />
                   ) : (
-                    <ChevronDown className="h-4 w-4 text-zinc-400" />
+                    <Icon
+                      icon="mdi:chevron-down"
+                      width={16}
+                      className="text-zinc-400"
+                    />
                   )}
                 </div>
               </button>
@@ -79,7 +82,11 @@ export default function SeasonDetails() {
 
                         {/* Play Button */}
                         <button className="absolute inset-0 flex items-center justify-center">
-                          <PlayCircle className="h-10 w-10 text-white/90 transition hover:scale-105" />
+                          <Icon
+                            icon="mdi:play-circle"
+                            width={40}
+                            className="text-white/90 transition hover:scale-105"
+                          />
                         </button>
                       </div>
 
@@ -91,7 +98,11 @@ export default function SeasonDetails() {
                           </h3>
 
                           <div className="flex items-center gap-1 rounded-full bg-white/5 px-2 py-1 text-[11px] text-zinc-400">
-                            <Clock3 className="h-3 w-3" />
+                            <Icon
+                              icon="mdi:clock-outline"
+                              width={12}
+                              className="text-zinc-400"
+                            />
                             {episode.duration}
                           </div>
                         </div>

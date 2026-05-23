@@ -1,14 +1,12 @@
-import { Calendar, Globe } from "lucide-react";
+import { Icon } from "@iconify/react";
 import StarRating from "./StarRating";
-import { FaRegStar } from "react-icons/fa";
 const Sidebar = ({ movie, director, directorInfo, music, musicInfo }) => {
   return (
     <div className="h-fit space-y-6 rounded-3xl border border-zinc-800 bg-(--color-dark) p-6">
       {/* RELEASE YEAR */}
       <div>
         <div className="mb-2 flex items-center gap-2 text-zinc-400">
-          <Calendar size={16} />
-          <span className="text-sm">Released Year</span>
+          <Icon icon="mdi:calendar" width={16} />
         </div>
 
         <h3 className="text-2xl font-bold">
@@ -19,7 +17,7 @@ const Sidebar = ({ movie, director, directorInfo, music, musicInfo }) => {
       {/* LANGUAGES */}
       <div>
         <div className="mb-3 flex items-center gap-2 text-zinc-400">
-          <Globe size={16} />
+          <Icon icon="mdi:earth" width={16} />
           <span className="text-sm">Available Languages</span>
         </div>
 

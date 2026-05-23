@@ -5,7 +5,7 @@ const MovieCard = ({ movie }) => {
       <img
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title}
-        className="w-full h-[320px] object-cover"
+        className="w-full h-80 object-cover"
       />
 
       <div className="p-3 flex flex-col gap-2 flex-1">

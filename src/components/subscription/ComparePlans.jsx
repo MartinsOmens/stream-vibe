@@ -7,7 +7,7 @@ import { plans, rows } from "../../data/plansData";
 
 const ComparePlans = () => {
   return (
-    <section className="min-h-screen text-white px-6 sm:py-5 md:py-10">
+    <section className="h-max text-white px-6 sm:py-5 md:py-10">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="mb-10">

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
+import { Icon } from "@iconify/react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -11,7 +11,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link
           to="/"
-          className="text-2xl text-lg md:text-xl font-bold text-[#E50000]"
+          className="text-2xl md:text-xl font-bold text-[#E50000]"
         >
           StreamVibe
         </Link>
@@ -34,25 +34,28 @@ const Navbar = () => {
 
         {/* Right Side */}
         <div className="flex items-center gap-2 md:gap-4 text-white">
-          {/* Search */}
-          <button className="p-2 rounded-full hover:bg-white/10 transition">
-            <FaSearch className="text-base md:text-lg" />
-          </button>
+         
 
           {/* Buttons (sm and above) */}
           <div className="hidden sm:flex gap-6">
-            <button className="px-4 py-2 rounded-md border border-white/40 hover:border-[#E50000] hover:text-[#E50000] transition">
+            <Link
+              to="/signup"
+              className="px-4 py-2 rounded-md border border-white/40 hover:border-[#E50000] hover:text-[#E50000] transition"
+            >
               Sign Up
-            </button>
+            </Link>
 
-            <button className="px-4 py-2 rounded-md bg-[#E50000] text-white font-semibold shadow-md hover:bg-[#C40000] hover:scale-105 hover:shadow-lg transition">
+            <Link
+              to="/login"
+              className="px-4 py-2 rounded-md bg-[#E50000] text-white font-semibold shadow-md hover:bg-[#C40000] hover:scale-105 hover:shadow-lg transition"
+            >
               Log In
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button className="md:hidden p-2" onClick={() => setOpen(!open)}>
-            {open ? <FaTimes size={20} /> : <FaBars size={20} />}
+            {open ? <Icon icon="mdi:close" width={20} /> : <Icon icon="mdi:menu" width={20} />}
           </button>
         </div>
       </div>

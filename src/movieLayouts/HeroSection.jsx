@@ -1,44 +1,131 @@
-import { Play, Plus, ThumbsUp, Volume2 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-const HeroSection = ({ movie }) => {
-  return (
-    <section className="relative h-[70vh] overflow-hidden rounded-3xl">
-      {/* BACKDROP IMAGE */}
-      <img
-        src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-        alt={movie.title}
-        className="absolute inset-0 h-full w-full object-cover"
-      />
+import HeroSection from "../movieLayouts/HeroSection";
+import DescriptionCard from "../movieLayouts/DescriptionCard";
+import CastSection from "../movieLayouts/CastSection";
+import ReviewsSection from "../movieLayouts/ReviewsSection";
+import Sidebar from "../movieLayouts/Sidebar";
+import CTASection from "../components/home/CTA/CTASection";
 
-      {/* OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+import {
+  fetchMovieDetails,
+  fetchMovieCredits,
+  fetchMovieReviews,
+  fetchPersonDetails,
+} from "../api/tmdb.js";
 
-      {/* CONTENT */}
-      <div className="absolute bottom-0 left-0 w-full p-10">
-        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <h1 className="mb-10 text-5xl font-bold">{movie.title}</h1>
-          <div className="flex items-center gap-3">
-            <button className="flex items-center gap-2 rounded-md bg-red-600 px-7 py-4 text-sm font-semibold text-white transition duration-300 hover:bg-red-700">
-              <Play size={18} fill="white" />
-              Play Now
-            </button>
+const MovieDetails = () => {
+  const { id } = useParams();
 
-            <button className="flex h-12 w-12 items-center justify-center rounded-md bg-black/60 text-white backdrop-blur-md transition duration-300 hover:bg-white hover:text-black">
-              <Plus size={18} />
-            </button>
+  const [movie, setMovie] = useState(null);
+  const [cast, setCast] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  const [crew, setCrew] = useState([]);
+  const [directorInfo, setDirectorInfo] = useState(null);
+  const [ musicInfo,setMusicInfo] = useState(null)
 
-            <button className="flex h-12 w-12 items-center justify-center rounded-md bg-black/60 text-white backdrop-blur-md transition duration-300 hover:bg-white hover:text-black">
-              <ThumbsUp size={18} />
-            </button>
+  useEffect(() => {
+    const getMovieData = async () => {
+      try {
+        const movieData = await fetchMovieDetails(id);
+        const creditsData = await fetchMovieCredits(id);
+        const reviewsData = await fetchMovieReviews(id);
 
-            <button className="flex h-12 w-12 items-center justify-center rounded-md bg-black/60 text-white backdrop-blur-md transition duration-300 hover:bg-white hover:text-black">
-              <Volume2 size={18} />
-            </button>
-          </div>
-        </div>
+        setMovie(movieData);
+        setCast(creditsData.cast.slice(0, 10));
+        setReviews(reviewsData.results.slice(0, 4));
+        setCrew(creditsData.crew);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getMovieData();
+  }, [id]);
+
+  const director = crew.find((person) => person.job === "Director");
+
+  const music = crew.find(
+    (person) =>
+      person.job === "Original Music Composer" || person.job === "Music",
+  );
+
+  const languages =
+    movie?.spoken_languages?.map((lang) => lang.english_name) || [];
+
+  // 3. FETCH DIRECTOR IMAGE (CORRECT WAY)
+  useEffect(() => {
+    const getDirectorInfo = async () => {
+      if (!director?.id) return;
+
+      try {
+        const data = await fetchPersonDetails(director.id);
+        setDirectorInfo(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    getDirectorInfo();
+  }, [director?.id]);
+
+  //FETCJ MUSIC DIRECTOR IMAGE
+
+  useEffect(() => {
+  const getMusicInfo = async () => {
+    if (!music?.id) return;
+
+    try {
+      const data = await fetchPersonDetails(music.id);
+      setMusicInfo(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  getMusicInfo();
+}, [music?.id]);
+
+  if (!movie) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <h1 className="text-4xl font-bold text-white">Loading...</h1>
       </div>
-    </section>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-(--color-secondary) text-white">
+      <div className="mx-auto max-w-7xl px-4 py-8">
+        {/* HERO */}
+        <HeroSection movie={movie} />
+
+        {/* CONTENT */}
+        <div className="mt-8 grid gap-6 lg:grid-cols-3">
+          {/* LEFT */}
+          <div className="space-y-6 lg:col-span-2">
+            <DescriptionCard movie={movie} />
+
+            <CastSection cast={cast} />
+
+            <ReviewsSection reviews={reviews} />
+          </div>
+
+          {/* RIGHT */}
+          <Sidebar
+            movie={movie}
+            director={director}
+            directorInfo={directorInfo}
+            music={music}
+            musicInfo = {musicInfo}
+          />
+        </div>
+
+        <CTASection />
+      </div>
+    </div>
   );
 };
 
-export default HeroSection;
+export default MovieDetails;
