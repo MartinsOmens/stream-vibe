@@ -35,7 +35,7 @@ const MovieBanner = () => {
         >
           {banners.slice(0, 5).map((banner) => (
             <SwiperSlide key={banner.id}>
-              <div className="relative h-[650px] w-full">
+              <div className="relative h-162.5 w-full">
                 {/* Background Image */}
                 <img
                   src={`https://image.tmdb.org/t/p/original${banner.backdrop_path}`}
