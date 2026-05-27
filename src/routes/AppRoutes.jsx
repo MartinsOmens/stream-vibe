@@ -8,6 +8,7 @@ import MovieDetails from "../pages/MovieDetails";
 
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
+import Dashboard from "../pages/Dashboard";
 
 const AppRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const AppRoutes = () => {
         <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path="/support" element={<Support />} />
         <Route path="/subscriptions" element={<Subscriptions />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </div>
   );
