@@ -12,67 +12,72 @@ import NewReleaseShows from "../../../sections/shows/NewReleaseShows";
 
 const MoviesWrapper = () => {
   return (
-    <div className="min-h-screen px-6 lg:px-12 py-10">
-      <div className="max-w-7xl mx-auto">
-        <button className="bg-red-600 px-4 py-2 rounded-lg text-sm mb-10">
+    <main className="min-h-screen w-full overflow-hidden">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 py-8 md:py-10">
+        {/* ---------------- MOVIES ---------------- */}
+        <button className="bg-red-600 px-4 py-2 rounded-lg text-sm mb-8 md:mb-10">
           Movies
         </button>
 
-        <section className="mb-16">
-          <SectionHeader title="Our Genres" />
-          <GenreWrapper />
-        </section>
+        <div className="space-y-12 md:space-y-16">
+          <section>
+            <SectionHeader title="Our Genres" />
+            <GenreWrapper />
+          </section>
 
-        <section className="mb-16">
-          <SectionHeader title="Popular Movies" />
-          <PopularSection />
-        </section>
+          <section>
+            <SectionHeader title="Popular Movies" />
+            <PopularSection />
+          </section>
 
-        <section className="mb-16">
-          <SectionHeader title="Trending Movies" />
-          <TrendingSection />
-        </section>
+          <section>
+            <SectionHeader title="Trending Movies" />
+            <TrendingSection />
+          </section>
 
-        <section className="mb-16">
-          <SectionHeader title="New Released Movies" />
-          <UpcomingSection />
-        </section>
+          <section>
+            <SectionHeader title="New Released Movies" />
+            <UpcomingSection />
+          </section>
 
-        <section className="mb-16">
-          <SectionHeader title="Top Rated Movies" />
-          <TopRatedSection />
-        </section>
-      </div>
+          <section>
+            <SectionHeader title="Top Rated Movies" />
+            <TopRatedSection />
+          </section>
+        </div>
 
-      {/* ----------SHOWS----------- */}
-      <div className="max-w-7xl mx-auto mt-10">
-        <button className="bg-red-600 px-4 py-2 rounded-lg text-sm my-10">
-          SHOWS
+        {/* ---------------- SHOWS ---------------- */}
+        <button className="bg-red-600 px-4 py-2 rounded-lg text-sm mt-14 mb-8 md:mb-10">
+          Shows
         </button>
 
-        <section className="mb-16">
-          <SectionHeader title="Popular Shows" />
-          <PopularShowsSection />
-        </section>
+        <div className="space-y-12 md:space-y-16">
+          <section>
+            <SectionHeader title="Popular Shows" />
+            <PopularShowsSection />
+          </section>
 
-        <section className="mb-16">
-          <SectionHeader title="Trending TV Shows" />
-          <TrendingShowsSection />
-        </section>
+          <section>
+            <SectionHeader title="Trending TV Shows" />
+            <TrendingShowsSection />
+          </section>
 
-        <section className="mb-16">
-          <SectionHeader title="New Released Shows" />
-          <NewReleaseShows />
-        </section>
+          <section>
+            <SectionHeader title="New Released Shows" />
+            <NewReleaseShows />
+          </section>
 
-        <section className="mb-16">
-          <SectionHeader title="Must-Watch Shows" />
-          <TopRatedShows />
-        </section>
+          <section>
+            <SectionHeader title="Must-Watch Shows" />
+            <TopRatedShows />
+          </section>
+        </div>
 
-        <CTASection />
+        <div className="mt-16">
+          <CTASection />
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 
