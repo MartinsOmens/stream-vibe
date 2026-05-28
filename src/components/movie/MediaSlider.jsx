@@ -35,6 +35,7 @@ const MediaSlider = ({ data, prevClass, nextClass }) => {
             slidesPerView: 5,
           },
         }}
+        
       >
         {data.map((movie) => (
           <SwiperSlide key={movie.id}>

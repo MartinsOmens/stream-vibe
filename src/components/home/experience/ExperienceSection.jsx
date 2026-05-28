@@ -8,7 +8,7 @@ const devices = [
       "StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
   },
   {
-    title: "Tablet",
+    title: "Tablet dfdfw",
     icon: "mdi:tablet-ipad",
     description:
       "StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
@@ -59,7 +59,7 @@ const ExperienceSection = () => {
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {devices.map((item) => {
-            const Icon = item.icon;
+  
 
             return (
               <article
@@ -72,7 +72,7 @@ const ExperienceSection = () => {
 
                 {/* Content */}
                 <div className="relative z-10">
-                  <div className="mb-5 flex items-center gap-4">
+                  <div className="flex items-center gap-4 mb-2">
                     <div
                       className="flex h-12 w-12 items-center justify-center rounded-xl 
                       bg-white/5 text-red-500 ring-1 ring-white/5 
