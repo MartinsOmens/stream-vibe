@@ -9,10 +9,7 @@ const Navbar = () => {
     <div className="relative w-full z-50">
       <div className="flex justify-between items-center px-4 md:px-8 py-4 md:py-6">
         {/* Logo */}
-        <Link
-          to="/"
-          className="text-2xl md:text-xl font-bold text-[#E50000]"
-        >
+        <Link to="/" className="text-2xl md:text-xl font-bold text-[#E50000]">
           StreamVibe
         </Link>
 
@@ -34,8 +31,6 @@ const Navbar = () => {
 
         {/* Right Side */}
         <div className="flex items-center gap-2 md:gap-4 text-white">
-         
-
           {/* Buttons (sm and above) */}
           <div className="hidden sm:flex gap-6">
             <Link
@@ -55,7 +50,11 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button className="md:hidden p-2" onClick={() => setOpen(!open)}>
-            {open ? <Icon icon="mdi:close" width={20} /> : <Icon icon="mdi:menu" width={20} />}
+            {open ? (
+              <Icon icon="mdi:close" width={20} />
+            ) : (
+              <Icon icon="mdi:menu" width={20} />
+            )}
           </button>
         </div>
       </div>
@@ -99,13 +98,19 @@ const Navbar = () => {
 
         {/* Auth Buttons */}
         <div className="pt-4 flex flex-col gap-3">
-          <button className="w-full py-3 rounded-md border border-white/30 hover:border-[#E50000] hover:text-[#E50000] transition">
+          <Link
+            to="/signup"
+            className="w-full p-2 text-center rounded-md border border-white/30 hover:border-[#E50000] hover:text-[#E50000] transition"
+          >
             Sign Up
-          </button>
+          </Link>
 
-          <button className="w-full py-3 rounded-md bg-[#E50000] text-white font-semibold shadow-md hover:bg-[#C40000] hover:scale-[1.02] transition">
+          <Link
+            to="/login"
+            className="w-full p-2 text-center rounded-md bg-[#E50000] text-white font-semibold shadow-md hover:bg-[#C40000] hover:scale-[1.02] transition"
+          >
             Log In
-          </button>
+          </Link>
         </div>
       </div>
     </div>
