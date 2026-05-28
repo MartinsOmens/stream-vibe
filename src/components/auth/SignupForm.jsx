@@ -1,10 +1,54 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
+import { toast } from "react-toastify";
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
+      await updateProfile(userCredential.user, {
+        displayName: fullName,
+      });
+      toast.success("Account created successfully! Please login.");
+      navigate("/login");
+    } catch (error) {
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          toast.error("Email already exists");
+          break;
+
+        case "auth/weak-password":
+          toast.error("Password should be at least 6 characters");
+          break;
+
+        default:
+          toast.error("Something went wrong");
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 text-white">
@@ -16,7 +60,7 @@ export default function Signup() {
         </div>
 
         {/* Form */}
-        <form className="space-y-4">
+        <form onSubmit={handleSignup} className="space-y-4">
           {/* Name */}
           <div>
             <label className="block text-sm text-gray-400 mb-1">
@@ -25,6 +69,8 @@ export default function Signup() {
             <input
               type="text"
               placeholder="John Doe"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
               className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-xl focus:outline-none focus:border-[#E50000]"
             />
           </div>
@@ -35,6 +81,8 @@ export default function Signup() {
             <input
               type="email"
               placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-xl focus:outline-none focus:border-[#E50000]"
             />
           </div>
@@ -47,6 +95,8 @@ export default function Signup() {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-xl focus:outline-none focus:border-[#E50000] pr-12"
               />
 
@@ -74,6 +124,8 @@ export default function Signup() {
               <input
                 type={showConfirm ? "text" : "password"}
                 placeholder="••••••••"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-xl focus:outline-none focus:border-[#E50000] pr-12"
               />
 

@@ -5,7 +5,7 @@ import MovieRow from "./MovieRow";
 
 export default function DashboardSection() {
   return (
-    <div className="min-h-screen bg-[#0F0F0F] text-white flex">
+    <div className="h-screen bg-[#0F0F0F] text-white flex">
 
       {/* Sidebar */}
       <Sidebar />
