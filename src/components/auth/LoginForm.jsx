@@ -94,12 +94,12 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4 py-10 text-white">
-      <div className="w-full max-w-md bg-[#111111] border border-[#262626] rounded-3xl shadow-2xl p-8">
+    <div className="min-h-screen bg-[#0f0f0f] flex items-center justify-center px-4 py-10 text-white">
+      <div className="w-full max-w-md bg-[#141414] border border-[#262626] rounded-3xl shadow-2xl p-8">
 
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold tracking-tight">
+          <h1 className="text-4xl font-bold tracking-tight text-[#E50000]">
             Welcome Back
           </h1>
 

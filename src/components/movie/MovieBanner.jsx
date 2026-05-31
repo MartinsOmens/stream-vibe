@@ -96,6 +96,7 @@ const MovieBanner = () => {
                         />
                       </button>
                     </div>
+                    
                   </div>
                 </div>
               </div>

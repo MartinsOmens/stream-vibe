@@ -1,4 +1,4 @@
-import movies from "../../data/movies";
+import {movies} from "../../data/movies";
 
 const MovieGrid = () => {
   return (

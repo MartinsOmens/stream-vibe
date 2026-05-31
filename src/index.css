@@ -27,3 +27,9 @@ body {
   background: #E50000;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+
