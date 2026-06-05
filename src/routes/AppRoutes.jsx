@@ -15,10 +15,10 @@ import ProtectedRoute from "./ProtectedRoute";
 // Dashboard pages
 import DashboardLayout from "../layout/DashboardLayout";
 import DashboardHome from "../pages/dashboard/DashboardHome";
-import DashboardMovies from "../pages/dashboard/DashboardMovies";
-import DashboardSeries from "../pages/dashboard/DashboardSeries";
-import DashboardMyList from "../pages/dashboard/DashboardMyList";
-import DashboardTrending from "../pages/dashboard/DashboardTrending";
+import MyMovies from "../pages/dashboard/MyMovies";
+import MySeries from "../pages/dashboard/MySeries";
+import MyList from "../pages/dashboard/MyList";
+import MyTrending from "../pages/dashboard/MyTrending";
 import DashboardSettings from "../pages/dashboard/DashboardSettings";
 
 const AppRoutes = () => {
@@ -46,10 +46,10 @@ const AppRoutes = () => {
         <Route index element={<DashboardHome />} />
 
         {/* Nested routes (NO /dashboard prefix here) */}
-        <Route path="/dashboard/movies" element={<DashboardMovies />} />
-        <Route path="/dashboard/series" element={<DashboardSeries />} />
-        <Route path="/dashboard/my-list" element={<DashboardMyList />} />
-        <Route path="/dashboard/trending" element={<DashboardTrending />} />
+        <Route path="/dashboard/my-movies" element={<MyMovies />} />
+        <Route path="/dashboard/my-series" element={<MySeries />} />
+        <Route path="/dashboard/my-list" element={<MyList />} />
+        <Route path="/dashboard/trending" element={<MyTrending />} />
         <Route path="/dashboard/settings" element={<DashboardSettings />} />
       </Route>
     </Routes>

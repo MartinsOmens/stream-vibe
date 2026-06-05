@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const genres = [
   "Trending",
   "Adventure",
@@ -9,13 +11,19 @@ const genres = [
   "Horror",
 ];
 
-const HomeGenres = () => {
+const HomeGenres = ({ selectedGenre, setSelectedGenre }) => {
   return (
-    <div className="flex gap-4 overflow-x-auto scrollbar-hide">
-      {genres.map((genre, index) => (
+    <div className="w-full flex justify-between gap-4 overflow-x-auto scrollbar-hide">
+      {genres.map((genre) => (
         <button
           key={genre}
-          className="bg-[#E50000] text-white px-6 py-3 rounded-2xl whitespace-nowrap transition"
+          onClick={() => setSelectedGenre(genre)}
+          className={`px-6 py-3 rounded-2xl whitespace-nowrap transition
+            ${
+              selectedGenre === genre
+                ? "bg-red-600 text-white"
+                : "bg-gray-500 text-black"
+            }`}
         >
           {genre}
         </button>
