@@ -12,13 +12,13 @@ export default function Sidebar({ mobile = false }) {
     {
       icon: "mdi:movie",
       label: "Movies",
-      path: "/dashboard/movies",
+      path: "/dashboard/my-movies",
     },
 
     {
       icon: "mdi:television",
       label: "Series",
-      path: "/dashboard/series",
+      path: "/dashboard/my-series",
     },
 
     {
