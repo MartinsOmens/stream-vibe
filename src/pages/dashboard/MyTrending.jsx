@@ -1,10 +1,9 @@
 import React from "react";
+import Trending from "../../components/dashboard/Trending/Trending";
 
 const MyTrending = () => {
   return (
-    <div>
-      <h1>Trending</h1>
-    </div>
+    <Trending/>
   );
 };
 

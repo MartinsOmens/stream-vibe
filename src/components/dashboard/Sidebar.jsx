@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 export default function Sidebar({ mobile = false }) {
   const menuItems = [
@@ -8,31 +8,26 @@ export default function Sidebar({ mobile = false }) {
       label: "Home",
       path: "/dashboard",
     },
-
     {
       icon: "mdi:movie",
       label: "Movies",
       path: "/dashboard/my-movies",
     },
-
     {
       icon: "mdi:television",
       label: "Series",
       path: "/dashboard/my-series",
     },
-
     {
       icon: "mdi:heart",
       label: "My List",
       path: "/dashboard/my-list",
     },
-
     {
       icon: "mdi:trending-up",
       label: "Trending",
       path: "/dashboard/trending",
     },
-
     {
       icon: "mdi:cog",
       label: "Settings",
@@ -91,7 +86,9 @@ export default function Sidebar({ mobile = false }) {
 
           {/* Text */}
           <div>
-            <p className="whitespace-nowrap text-sm font-semibold">John Doe</p>
+            <p className="whitespace-nowrap text-sm font-semibold">
+              John Doe
+            </p>
 
             <p className="whitespace-nowrap text-xs text-gray-500">
               Premium User
@@ -105,16 +102,22 @@ export default function Sidebar({ mobile = false }) {
 
 function SidebarItem({ icon, label, path }) {
   return (
-    <Link
+    <NavLink
       to={path}
-      className="
-        flex items-center gap-4
-        rounded-xl p-3
-        text-gray-300
-        transition-all duration-300
-        hover:bg-[#1f1f1f]
-        hover:text-[#E50000]
-      "
+      end={path === "/dashboard"}
+      className={({ isActive }) =>
+        `
+          flex items-center gap-4
+          rounded-xl p-3
+          transition-all duration-300
+          hover:bg-[#1f1f1f]
+          ${
+            isActive
+              ? "bg-[#1f1f1f] text-[#E50000]"
+              : "text-gray-300 hover:text-[#E50000]"
+          }
+        `
+      }
     >
       {/* Icon */}
       <div className="min-w-[24px]">
@@ -122,7 +125,9 @@ function SidebarItem({ icon, label, path }) {
       </div>
 
       {/* Label */}
-      <span className="whitespace-nowrap text-sm font-medium">{label}</span>
-    </Link>
+      <span className="whitespace-nowrap text-sm font-medium">
+        {label}
+      </span>
+    </NavLink>
   );
 }

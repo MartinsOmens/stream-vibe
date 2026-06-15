@@ -9,133 +9,95 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 
-import {
-  movieBanner1,
-  movieBanner2,
-  movieBanner3,
-} from "../../../assets";
-
-export const banners = [
-  {
-    id: 1,
-    image: movieBanner1,
-    title: "Avengers: Endgame",
-    description:
-      "With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos's actions and restore balance to the universe.",
-  },
-  {
-    id: 2,
-    image: movieBanner2,
-    title: "Kantara",
-    description:
-      "A fiery young man clashes with an unflinching forest officer in a South Indian village where spirituality, fate and folklore rule the lands.",
-  },
-  {
-    id: 3,
-    image: movieBanner3,
-    title: "Stranger Things",
-    description:
-      "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.",
-  },
-];
+import { fetchBannerMovies } from "../../../api/tmdb";
+import { useMovies } from "../../../hooks/dashboard/useMovies.js";
 
 const HeroBanner = () => {
   const swiperRef = useRef(null);
   const navigate = useNavigate();
+  const movies = useMovies(fetchBannerMovies);
+
+  if (!movies.length) {
+    return (
+      <div className="h-[60vh] flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl">
-      <Swiper
-        modules={[Autoplay, Pagination]}
-        slidesPerView={1}
-        loop
-        speed={1000}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-        }}
-        className="h-[60vh] min-h-112.5 lg:h-[75vh]"
-      >
-        {banners.map((banner) => (
-          <SwiperSlide key={banner.id}>
-            <div className="relative h-full w-full overflow-hidden">
-              {/* Background Image */}
-              <img
-                src={banner.image}
-                alt={banner.title}
-                className="absolute inset-0 h-full w-full object-cover"
-              />
+    <section className="w-full px-4 py-6">
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-2xl">
+        <Swiper
+          modules={[Autoplay, Pagination]}
+          slidesPerView={1}
+          loop
+          speed={1000}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          pagination={{ clickable: true, el: ".banner-pagination" }}
+          onBeforeInit={(swiper) => (swiperRef.current = swiper)}
+          className="h-[420px] md:h-[520px]"
+        >
+          {movies.slice(0, 5).map((movie) => (
+            <SwiperSlide key={movie.id}>
+              <div className="relative h-full w-full">
+                <img
+                  src={`https://image.tmdb.org/t/p/original${movie.backdrop_path || movie.poster_path}`}
+                  alt={movie.title || movie.name}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/60" />
-              <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b0b] via-black/40 to-black/10" />
 
-              {/* Content */}
-              <div className="absolute inset-0 z-10 flex items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16">
-                <div className="max-w-xs text-center sm:max-w-lg md:max-w-xl lg:max-w-2xl">
-                  <h1 className="text-3xl font-bold text-white drop-shadow-lg sm:text-4xl md:text-5xl lg:text-6xl">
-                    {banner.title}
-                  </h1>
+                <div className="absolute inset-0 flex items-end pb-20">
+                  <div className="max-w-3xl px-6 text-left">
+                    <h2 className="mb-3 text-3xl font-bold text-white md:text-4xl">
+                      {movie.title || movie.name}
+                    </h2>
+                    <p className="mb-6 max-w-2xl text-sm leading-6 text-gray-400 md:text-base">
+                      {movie.overview}
+                    </p>
 
-                  <p className="mt-4 text-sm leading-6 text-gray-300 sm:text-base sm:leading-7 lg:text-lg">
-                    {banner.description}
-                  </p>
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={() => navigate(`/movie/${movie.id}`)}
+                        className="flex items-center gap-2 rounded-md bg-red-600 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-red-700"
+                      >
+                        <Icon icon="mdi:play" width={16} />
+                        Play
+                      </button>
 
-                  <div className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:mt-8 sm:gap-3">
-                    {/* Play Button */}
-                    <button
-                      onClick={() => navigate(`/movie/${banner.id}`)}
-                      className="flex items-center gap-2 rounded-lg bg-red-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-700 sm:px-7 sm:py-4"
-                    >
-                      <Icon icon="mdi:play" width={18} />
-                      Play Now
-                    </button>
-
-                    {/* Add */}
-                    <button className="flex h-10 w-10 items-center justify-center rounded-lg bg-black/60 text-white backdrop-blur-md transition hover:bg-gray-500 hover:text-black sm:h-12 sm:w-12">
-                      <Icon icon="mdi:plus" width={18} />
-                    </button>
-
-                    {/* Like */}
-                    <button className="flex h-10 w-10 items-center justify-center rounded-lg bg-black/60 text-white backdrop-blur-md transition hover:bg-gray-500 hover:text-black sm:h-12 sm:w-12">
-                      <Icon icon="mdi:thumb-up" width={18} />
-                    </button>
-
-                    {/* Volume */}
-                    <button className="flex h-10 w-10 items-center justify-center rounded-lg bg-black/60 text-white backdrop-blur-md transition hover:bg-gray-500 hover:text-black sm:h-12 sm:w-12">
-                      <Icon icon="mdi:volume-high" width={18} />
-                    </button>
+                      <button className="flex h-10 w-10 items-center justify-center rounded-md bg-black/60 text-white backdrop-blur-md transition duration-300 hover:bg-white hover:text-black">
+                        <Icon icon="mdi:plus" width={18} />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-        {/* Navigation Controls */}
-        <div className="absolute bottom-0 left-0 right-0 z-30 hidden items-center justify-between bg-black/20 px-6 py-4 backdrop-blur-xl md:flex">
-          <button
-            onClick={() => swiperRef.current?.slidePrev()}
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/20 bg-black/60 text-white transition hover:bg-white hover:text-black"
-          >
-            <Icon icon="mdi:chevron-left" width={22} />
-          </button>
+        <button
+          onClick={() => swiperRef.current && swiperRef.current.slidePrev()}
+          className="absolute bottom-8 left-4 z-20 flex h-10 w-10 items-center justify-center rounded-md bg-black/60 text-white transition duration-300 hover:bg-white/50 hover:text-black"
+        >
+          <Icon icon="mdi:chevron-left" width={20} />
+        </button>
 
-          <button
-            onClick={() => swiperRef.current?.slideNext()}
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/20 bg-black/60 text-white transition hover:bg-white hover:text-black"
-          >
-            <Icon icon="mdi:chevron-right" width={22} />
-          </button>
-        </div>
-      </Swiper>
-    </div>
+        <button
+          onClick={() => swiperRef.current && swiperRef.current.slideNext()}
+          className="absolute bottom-8 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-md bg-black/60 text-white transition duration-300 hover:bg-white/50 hover:text-black"
+        >
+          <Icon icon="mdi:chevron-right" width={20} />
+        </button>
+
+        <div className="banner-pagination absolute bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2" />
+      </div>
+    </section>
   );
 };
 
