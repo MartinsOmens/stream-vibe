@@ -65,12 +65,8 @@ export default function DashboardNavbar() {
             >
               <button className="flex items-center gap-3 rounded-xl p-2 hover:bg-[#1a1a1a] transition">
                 {/* Avatar */}
-                <div className="relative">
-                  <div className="h-10 w-10 rounded-full bg-[#E50000] flex items-center justify-center font-semibold text-white">
-                    {user?.displayName?.charAt(0) || "U"}
-                  </div>
-
-                  <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[#111111] bg-green-500" />
+                <div className="h-10 w-10 rounded-full bg-[#E50000] flex items-center justify-center font-semibold text-white">
+                  {user?.displayName?.charAt(0) || "U"}
                 </div>
 
                 {/* User Info */}
