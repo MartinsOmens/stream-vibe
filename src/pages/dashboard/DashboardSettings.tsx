@@ -1,10 +1,9 @@
 import React from 'react'
+import SettingsSection from '../../components/dashboard/settings/SettingsSection'
 
 const DashboardSettings = () => {
   return (
-    <div>
-      <h1>Setting</h1>
-    </div>
+    <SettingsSection/>
   )
 }
 
