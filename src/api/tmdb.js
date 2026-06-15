@@ -114,3 +114,23 @@ export const fetchPersonDetails = async (personId) => {
   const response = await api.get(`/person/${personId}`);
   return response.data;
 };
+
+
+//Fetch Movie Trailer
+export const fetchMovieVideos = async (id) => {
+  const response = await api.get(
+    `/movie/${id}/videos`
+  );
+
+  return response.data.results;
+};
+
+//Watch Providers
+
+export const fetchWatchProviders = async (id) => {
+  const response = await api.get(
+    `/movie/${id}/watch/providers`
+  );
+
+  return response.data.results;
+};

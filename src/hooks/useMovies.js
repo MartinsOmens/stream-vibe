@@ -9,8 +9,8 @@ const useMovies = (fetchFunction) => {
       try {
         const result = await fetchFunction();
         setData(result);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.log(error);
       } finally {
         setLoading(false);
       }

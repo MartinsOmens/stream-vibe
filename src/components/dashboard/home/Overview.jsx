@@ -3,8 +3,8 @@ import { useState } from "react";
 import HeroBanner from "./HeroBanner";
 import HomeGenres from "./HomeGenres";
 
-import Recommended from "./Recommended";
-import RecentlyAdded from "./RecentlyAdded";
+import Recommended from "./PopularMovies";
+import RecentlyAdded from "./PopularShows";
 export default function Overview() {
   const [selectedGenre, setSelectedGenre] = useState("Trending");
 
@@ -15,7 +15,6 @@ export default function Overview() {
           <HeroBanner />
 
           <div className="space-y-14 px-4 py-8">
-         
             <Recommended />
             <RecentlyAdded />
           </div>

@@ -20,6 +20,7 @@ import MySeries from "../pages/dashboard/MySeries";
 import MyList from "../pages/dashboard/MyList";
 import MyTrending from "../pages/dashboard/MyTrending";
 import DashboardSettings from "../pages/dashboard/DashboardSettings";
+import MovvieDetails from "../components/dashboard/Movies/MovieDetails";
 
 const AppRoutes = () => {
   return (
@@ -46,11 +47,12 @@ const AppRoutes = () => {
         <Route index element={<DashboardHome />} />
 
         {/* Nested routes (NO /dashboard prefix here) */}
-        <Route path="/dashboard/my-movies" element={<MyMovies />} />
-        <Route path="/dashboard/my-series" element={<MySeries />} />
-        <Route path="/dashboard/my-list" element={<MyList />} />
-        <Route path="/dashboard/trending" element={<MyTrending />} />
-        <Route path="/dashboard/settings" element={<DashboardSettings />} />
+        <Route path="my-movies" element={<MyMovies />} />
+        <Route path="my-movies/:id" element={<MovvieDetails />} />
+        <Route path="my-series" element={<MySeries />} />
+        <Route path="my-list" element={<MyList />} />
+        <Route path="trending" element={<MyTrending />} />
+        <Route path="settings" element={<DashboardSettings />} />
       </Route>
     </Routes>
   );

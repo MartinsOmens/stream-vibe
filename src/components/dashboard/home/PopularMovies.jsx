@@ -1,5 +1,4 @@
 import MovieCard from "./MovieCard";
-import { recommendedMovies } from "./movieData";
 import { fetchPopularMovies } from "../../../api/tmdb";
 import { useMovies } from "../../../hooks/dashboard/useMovies.js";
 import { genreMap } from "../../../utils/genreMap.js";
@@ -23,8 +22,7 @@ export default function Recommended() {
 
         <button
           onClick={() => navigate("/dashboard/my-movies")}
-          className="relative px-5 py-2.5 text-[#E50000] font-medium 
-    bg-transparent 
+          className="relative px-5 py-2.5 text-[#E50000] font-medium bg-transparent 
     border-2 border-[#E50000] 
     rounded-full 
     overflow-hidden 
