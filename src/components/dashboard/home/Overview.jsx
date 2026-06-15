@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import HeroBanner from "./HeroBanner";
 import HomeGenres from "./HomeGenres";
-import ContinueWatching from "./ContinueWatching";
+
 import Recommended from "./Recommended";
 import RecentlyAdded from "./RecentlyAdded";
 export default function Overview() {
@@ -15,7 +15,7 @@ export default function Overview() {
           <HeroBanner />
 
           <div className="space-y-14 px-4 py-8">
-            <ContinueWatching />
+         
             <Recommended />
             <RecentlyAdded />
           </div>
