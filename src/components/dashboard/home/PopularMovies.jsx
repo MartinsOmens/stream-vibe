@@ -22,13 +22,7 @@ export default function Recommended() {
 
         <button
           onClick={() => navigate("/dashboard/my-movies")}
-          className="relative px-5 py-2.5 text-[#E50000] font-medium bg-transparent 
-    border-2 border-[#E50000] 
-    rounded-full 
-    overflow-hidden 
-    transition-all duration-300 ease-out
-    hover:bg-[#E50000] hover:text-white 
-    hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#E50000] focus:ring-offset-2 cursor-pointer"
+          className="relative px-5 py-2.5  text-[#E50000] font-medium bg-transparent border-2 border-[#E50000] rounded-full overflow-hidden transition-all duration-300 ease-out hover:bg-[#E50000] hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#E50000] focus:ring-offset-2 cursor-pointer"
         >
           View All
         </button>
@@ -46,7 +40,8 @@ export default function Recommended() {
               key={movie.id}
               image={`https://image.tmdb.org/t/p/original${movie.backdrop_path || movie.poster_path}`}
               title={movie.title}
-              subtitle={`${genre} • ⭐ ${movie.vote_average.toFixed(1)}`}
+              subtitle={movie.release_date?.split("-")[0] || "N/A"}
+              rating={`${genre} • ⭐ ${movie.vote_average.toFixed(1)}`}
             />
           );
         })}

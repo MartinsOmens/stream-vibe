@@ -10,7 +10,7 @@ import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 
 import { fetchBannerMovies } from "../../../api/tmdb";
-import { useMovies } from "../../../hooks/dashboard/useMovies.js";
+import { useMovies } from "../../../hooks/dashboard/useMovies";
 
 const HeroBanner = () => {
   const swiperRef = useRef(null);
@@ -70,7 +70,7 @@ const HeroBanner = () => {
                         Play
                       </button>
 
-                      <button className="flex h-10 w-10 items-center justify-center rounded-md bg-black/60 text-white backdrop-blur-md transition duration-300 hover:bg-white hover:text-black">
+                      <button className="flex h-10 w-10 items-center justify-center rounded-md bg-black/50 text-white backdrop-blur-md transition duration-300 hover:bg-white hover:text-black">
                         <Icon icon="mdi:plus" width={18} />
                       </button>
                     </div>

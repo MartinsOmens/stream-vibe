@@ -41,27 +41,6 @@ export const series = [
       "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c",
   },
   
-  {
-    id: 3,
-    title: "Dark",
-    genre: "Drama",
-    seasons: 3,
-    rating: 8.8,
-    status: "Completed",
-    image:
-      "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c",
-  },
-  
-  {
-    id: 3,
-    title: "Dark",
-    genre: "Drama",
-    seasons: 3,
-    rating: 8.8,
-    status: "Completed",
-    image:
-      "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c",
-  },
 ];
 
 export const continueWatchingSeries = [
@@ -82,21 +61,5 @@ export const continueWatchingSeries = [
     image:
       "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c",
   },
-   {
-    id: 1,
-    title: "Stranger Things",
-    episode: "S4:E6",
-    progress: 70,
-    image:
-      "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba",
-  },
 
-  {
-    id: 2,
-    title: "The Boys",
-    episode: "S2:E8",
-    progress: 40,
-    image:
-      "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c",
-  },
 ];

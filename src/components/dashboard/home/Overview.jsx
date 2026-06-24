@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import HeroBanner from "./HeroBanner";
-import HomeGenres from "./HomeGenres";
+
 
 import Recommended from "./PopularMovies";
 import RecentlyAdded from "./PopularShows";
@@ -13,7 +13,6 @@ export default function Overview() {
       <main className="flex-1 overflow-hidden">
         <div className="px-4 py-2">
           <HeroBanner />
-
           <div className="space-y-14 px-4 py-8">
             <Recommended />
             <RecentlyAdded />
