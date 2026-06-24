@@ -1,16 +1,13 @@
 "use client";
 
 import { useState } from "react";
-
-import SeriesHero from "./components/SeriesHero";
 import SearchBar from "./components/SearchBar";
 import FilterBar from "./components/FilterBar";
 import ContinueWatchingSeries from "./components/ContinueWatchingSeries";
 import SeriesGrid from "./components/SeriesGrid";
-
 import { genres, series } from "./seriesData";
-
 import { useSeriesFilter } from "./hooks/useSeriesFilter";
+import HeroBanner from "../home/HeroBanner";
 
 export default function SeriesPage() {
   const [search, setSearch] = useState("");
@@ -22,7 +19,8 @@ export default function SeriesPage() {
 
   return (
     <div className="space-y-10">
-      <SeriesHero />
+    
+      <HeroBanner/>
 
       <SearchBar value={search} onChange={setSearch} />
 

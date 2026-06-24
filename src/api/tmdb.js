@@ -88,7 +88,17 @@ export const fetchTopRatedShows = async () => {
 
   return response.data.results;
 };
+export const fetchAiringTodayShows = async () => {
+  const response = await api.get("/tv/airing_today");
 
+  return response.data.results;
+};
+
+export const fetchOnTheAirShows = async () => {
+  const response = await api.get("/tv/on_the_air");
+
+  return response.data.results;
+};
 //----------------------- MOVIE DETAILS ----------------
 // Fetch movie details
 export const fetchMovieDetails = async (id) => {
@@ -115,12 +125,9 @@ export const fetchPersonDetails = async (personId) => {
   return response.data;
 };
 
-
 //Fetch Movie Trailer
 export const fetchMovieVideos = async (id) => {
-  const response = await api.get(
-    `/movie/${id}/videos`
-  );
+  const response = await api.get(`/movie/${id}/videos`);
 
   return response.data.results;
 };
@@ -128,9 +135,14 @@ export const fetchMovieVideos = async (id) => {
 //Watch Providers
 
 export const fetchWatchProviders = async (id) => {
-  const response = await api.get(
-    `/movie/${id}/watch/providers`
-  );
+  const response = await api.get(`/movie/${id}/watch/providers`);
 
   return response.data.results;
 };
+
+// -------------SERIES ---------------------
+
+export async function getPopularSeries() {
+  const response = await api.get("/tv/popular");
+  return response.data;
+}

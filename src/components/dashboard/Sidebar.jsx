@@ -18,6 +18,11 @@ export default function Sidebar({ mobile = false }) {
       label: "Series",
       path: "/dashboard/my-series",
     },
+       {
+      icon: "mdi:television",
+      label: "Shows",
+      path: "/dashboard/my-shows",
+    },
     {
       icon: "mdi:heart",
       label: "My List",

@@ -1,6 +1,6 @@
 import { Play } from "lucide-react";
 
-export default function MovieCard({ image, title, subtitle }) {
+export default function MovieCard({ image, title, subtitle, rating }) {
   return (
     <div className="group cursor-pointer">
       <div className="relative overflow-hidden rounded-2xl">
@@ -20,6 +20,7 @@ export default function MovieCard({ image, title, subtitle }) {
       <h4 className="mt-3 font-semibold text-white">{title}</h4>
 
       <p className="text-sm text-gray-400">{subtitle}</p>
+      <p className="text-sm text-gray-400">{rating}</p>
     </div>
   );
 }
