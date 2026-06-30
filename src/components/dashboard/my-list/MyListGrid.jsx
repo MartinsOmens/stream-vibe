@@ -1,4 +1,5 @@
-import MyListCard from "./MyListCard";
+import MovieCard from "../Movies/components/MovieCard";
+
 
 export default function MyListGrid({ movies }) {
   return (
@@ -13,7 +14,8 @@ export default function MyListGrid({ movies }) {
       "
     >
       {movies.map((movie) => (
-        <MyListCard key={movie.id} movie={movie} />
+  
+        <MovieCard key={movie.id} movie={movie}/>
       ))}
     </div>
   );

@@ -48,7 +48,7 @@ const ShowsPage = () => {
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
   };
-
+console.log("First show:", shows[0]);
   return (
     <div className="space-y-8">
       {/* Heading */}
@@ -71,7 +71,7 @@ const ShowsPage = () => {
       />
 
       {/* Movies */}
-      <MovieGrid movies={filteredMovies} />
+      <MovieGrid movies={filteredMovies} mediaType="tv" />
     </div>
   );
 };

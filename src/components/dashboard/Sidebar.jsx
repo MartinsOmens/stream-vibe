@@ -1,7 +1,9 @@
 import { Icon } from "@iconify/react";
 import { NavLink, Link } from "react-router-dom";
+import { auth } from "../../firebase/firebase";
 
 export default function Sidebar({ mobile = false }) {
+  const user = auth.currentUser;
   const menuItems = [
     {
       icon: "mdi:home",
@@ -13,12 +15,8 @@ export default function Sidebar({ mobile = false }) {
       label: "Movies",
       path: "/dashboard/my-movies",
     },
+
     {
-      icon: "mdi:television",
-      label: "Series",
-      path: "/dashboard/my-series",
-    },
-       {
       icon: "mdi:television",
       label: "Shows",
       path: "/dashboard/my-shows",
@@ -28,11 +26,7 @@ export default function Sidebar({ mobile = false }) {
       label: "My List",
       path: "/dashboard/my-list",
     },
-    {
-      icon: "mdi:trending-up",
-      label: "Trending",
-      path: "/dashboard/trending",
-    },
+
     {
       icon: "mdi:cog",
       label: "Settings",
@@ -68,38 +62,21 @@ export default function Sidebar({ mobile = false }) {
 
       {/* Bottom Profile */}
       <div className="border-t border-gray-800 p-4">
-        <Link
-          to="/dashboard/profile"
-          className="
-            flex w-full items-center gap-4
-            rounded-xl p-3
-            text-gray-300
-            transition hover:bg-[#1f1f1f]
-          "
-        >
+        <div className="flex w-full items-center gap-4">
           {/* Avatar */}
-          <div
-            className="
-              flex h-10 w-10 min-w-[40px]
-              items-center justify-center
-              rounded-full bg-[#E50000]
-              text-white
-            "
-          >
-            <Icon icon="mdi:account" width={22} />
+          <div className="h-10 w-10 rounded-full bg-[#E50000] flex items-center justify-center font-semibold text-white">
+            {user?.displayName?.charAt(0) || "U"}
           </div>
 
-          {/* Text */}
-          <div>
-            <p className="whitespace-nowrap text-sm font-semibold">
-              John Doe
-            </p>
+          {/* User Info */}
+          <div className="hidden text-left md:block">
+            <h4 className="text-sm font-medium text-white">
+              {user?.displayName || "User"}
+            </h4>
 
-            <p className="whitespace-nowrap text-xs text-gray-500">
-              Premium User
-            </p>
+            <p className="text-xs text-gray-400">{user?.email}</p>
           </div>
-        </Link>
+        </div>
       </div>
     </aside>
   );
@@ -130,9 +107,7 @@ function SidebarItem({ icon, label, path }) {
       </div>
 
       {/* Label */}
-      <span className="whitespace-nowrap text-sm font-medium">
-        {label}
-      </span>
+      <span className="whitespace-nowrap text-sm font-medium">{label}</span>
     </NavLink>
   );
 }

@@ -40,16 +40,6 @@ export default function DashboardNavbar() {
             </Link>
           </div>
 
-          {/* Search */}
-          <div className="hidden md:flex items-center bg-[#1A1A1A] px-3 py-2 rounded-xl w-1/2">
-            <Icon icon="mdi:magnify" width="20" className="text-gray-400" />
-
-            <input
-              placeholder="Search movies..."
-              className="bg-transparent w-full ml-2 outline-none text-sm text-white"
-            />
-          </div>
-
           {/* Right */}
           <div className="flex items-center gap-5">
             {/* Notification */}

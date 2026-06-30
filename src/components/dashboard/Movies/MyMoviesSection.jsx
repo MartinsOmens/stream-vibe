@@ -83,7 +83,7 @@ export default function MyMoviesSection() {
       />
 
       {/* Movies */}
-      <MovieGrid movies={filteredMovies} />
+      <MovieGrid movies={filteredMovies} mediaType="movie" />
     </div>
   );
 }

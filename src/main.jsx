@@ -6,12 +6,15 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "../src/context/AuthContext.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { MyListProvider } from "./context/MyListContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <App />
+        <MyListProvider>
+          <App />
+        </MyListProvider>
         <ToastContainer />
       </AuthProvider>
     </BrowserRouter>

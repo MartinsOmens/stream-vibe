@@ -16,9 +16,9 @@ import ProtectedRoute from "./ProtectedRoute";
 import DashboardLayout from "../layout/DashboardLayout";
 import DashboardHome from "../pages/dashboard/DashboardHome";
 import MyMovies from "../pages/dashboard/MyMovies";
-import MySeries from "../pages/dashboard/MySeries";
+
 import MyList from "../pages/dashboard/MyList";
-import MyTrending from "../pages/dashboard/MyTrending";
+
 import DashboardSettings from "../pages/dashboard/DashboardSettings";
 import MovvieDetails from "../components/dashboard/Movies/MovieDetails";
 import MyShows from "../pages/dashboard/MyShows";
@@ -50,10 +50,10 @@ const AppRoutes = () => {
         {/* Nested routes (NO /dashboard prefix here) */}
         <Route path="my-movies" element={<MyMovies />} />
         <Route path="my-movies/:id" element={<MovvieDetails />} />
-        <Route path="my-series" element={<MySeries />} />
+       
         <Route path="my-shows" element={<MyShows />} />
         <Route path="my-list" element={<MyList />} />
-        <Route path="trending" element={<MyTrending />} />
+        
         <Route path="settings" element={<DashboardSettings />} />
       </Route>
     </Routes>
